@@ -37,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
     private EditText etEmail;
     private EditText etPassword;
     private Button btnLogin;
+    private Button btnLogout;
+    private Button btnSignUp;
 
     private ProgressDialog progressDialog;
 
@@ -55,6 +57,8 @@ public class MainActivity extends AppCompatActivity {
         etEmail = findViewById(R.id.etEmail);
         etPassword = findViewById(R.id.etPassword);
         btnLogin = findViewById(R.id.btnLogin);
+        btnLogout = findViewById(R.id.btnLogout);
+        btnSignUp = findViewById(R.id.btnSignUp);
 
         database = FirebaseDatabase.getInstance();
         databaseReference = database.getReference("Message");
@@ -108,6 +112,11 @@ public class MainActivity extends AppCompatActivity {
 
             login(email, password);
 
+        });
+
+        btnLogout.setOnClickListener(view-> {
+            mAuth.signOut();
+            Toast.makeText(this, "You are Sign Out..", Toast.LENGTH_SHORT).show();
         });
 
     }
